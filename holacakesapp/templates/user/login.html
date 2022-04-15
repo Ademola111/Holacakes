@@ -1,0 +1,91 @@
+{% extends 'user/loginbase.html' %}
+
+{% block title %} 
+	Holacake|Login
+{% endblock %}
+
+{% block content %}
+	<!-- form begins -->
+	<div class="row mb-5 mt-5">
+		<div class="col-md-8" style="min-height:50px ">
+			<img src="{{url_for('static', filename='images/cake1.png')}}" alt="cake" class="img-fluid thumbnail">
+		</div>
+		<div class="col-md-4">
+			<form  class="row g-3 align-item-start " action="{{url_for('submit_login')}}" method="POST">
+					<div class="col formwrap bg-light mt-5">
+						<h3>Login</h3>									
+							<div>
+								<p id="errormessage"></p>
+								<div class="col-12 mb-3">
+									<input class="form-control" id="email" type="email" name="email" placeholder="E-mail address or Username">
+								</div>
+							</div>
+							<div>
+								<div class="col-12 mb-3">
+									<input class="form-control" id="pwd" type="password" name="password" placeholder="">
+								</div>
+							</div>
+							<div>
+								<button type="submit" id="logbtn" class="btn btn-success">Login</button>
+								<input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+							   <span>Forgotten Password</span>
+							</div>
+							<div><p>New User <a href="{{url_for('signup')}}" class="btn btn-outline-warning">click here</a> to signup</p></div>
+					</div>
+			</form>
+		</div>
+	</div>
+	<!-- form ends-->
+	<!--Gallary-->
+	
+	<div class="container-fluid mt-5 mb-5">
+	<div class="row">
+		<div class="col-12"><h3>Related Products</h3></div>
+		<div class="col-md-3 ">
+			<div class="card" style="width: 18rem;">
+			  <img src="{{url_for('static', filename='images/birthdaycake.png')}}" class="card-img-top" alt="birthday cake">
+			  <div class="card-body text-light" style="background-color: black;">
+			    <h6 class="card-title">Birthday cake</h6>
+			    <p class="card-text">Description</p>
+				<p class="card-text">Price: N10,000.00</p>
+			    <a href="#" class="buy">Buy</a>
+			  </div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="card" style="width: 18rem;">
+			  <img src="{{url_for('static', filename='images/birthdaycake2.png')}}" class="card-img-top" alt="...">
+			  <div class="card-body text-light" style="background-color: black;">
+			    <h6 class="card-title">Birthday cake</h6>
+			    <p class="card-text">Description</p>
+				<p class="card-text">Price: N10,000.00</p>
+			    <a href="#" class="buy">Buy</a>
+			  </div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="card" style="width: 18rem;">
+			  <img src="{{url_for('static', filename='images/birthdaycake3.jpg')}}" class="card-img-top" alt="...">
+			  <div class="card-body text-light" style="background-color: black;">
+			    <h6 class="card-title">Birthday cake</h6>
+			    <p class="card-text">Description</p>
+				<p class="card-text">Price: N10,000.00</p>
+			    <a href="#" class="buy">Buy</a>
+			  </div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="card" style="width: 18rem;">
+			  <img src="{{url_for('static', filename='images/birthdaycake4.jpg')}}" class="card-img-top" alt="birthday cake">
+			  <div class="card-body text-light" style="background-color: black;">
+			    <h6 class="card-title">Birthday cake</h6>
+			    <p class="card-text">Description</p>
+				<p class="card-text">Price: N10,000.00</p>
+			    <a href="#" class="buy">Buy</a>
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- gallary ends-->
+{% endblock %}

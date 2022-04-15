@@ -1,0 +1,101 @@
+{% extends 'user/signupbase.html' %}
+	<!-- navbar section ends-->
+	{% block title%}
+		Signup
+	{% endblock %}
+
+	{% block content %}
+	<!-- carosel -->
+	<div class="row mb-5">
+		<div class="col-md-6">
+			{% with m = get_flashed_messages() %}
+				{% for i in m %}
+				<p class="alert alert-success">{{i}}</p>
+				{% endfor %}
+				{% endwith %}
+			<form  class="row g-3 align-item-start " action="{{url_for('submit_signup')}}" method="POST">
+								<div class="col formwrap bg-light mt-5">
+								<h3>Sign Up</h3>
+									<div class="row mb-3">
+										<div class="col-12 mt-3">
+											<input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+											<input class="form-control anim" type="text" name="fname" placeholder="First Name" required>
+										</div>
+									</div>
+									<div class="row mb-3">
+										<div class="col-12 mt-3">
+											<input class="form-control anim" type="text" name="lname" placeholder="Last Name" required>
+										</div>
+									</div>
+									<div>
+										<div class="col-12 mb-3">
+											<input class="form-control anim" type="email" name="email" placeholder="E-mail address or phone number" required>
+										</div>
+									</div>
+									<div>
+										<div class="col-12 mb-3">
+											<input class="form-control anim" type="password" name="password" placeholder="Password" required>
+										</div>
+									</div>
+									<div>
+										<div class="col-12 mb-3">
+											<input class="form-control anim" type="password" name="confirmpassword" placeholder="Confirm Password" required>
+										</div>
+									</div>
+									<div>
+										<div class="col-12 mb-3">
+											<input class="form-control anim" type="text" name="address" placeholder="Home Address" required>
+										</div>
+									</div>
+									<div>
+										<div class="col-12 mb-3">
+											<input class="form-control anim" type="text" name="phone" placeholder="Phone Number" required>
+										</div>
+									</div>
+									<div>
+										<div class="col-12 mb-3">
+											<label for="dob" class="form-check-label anim">Date of Birth</label>
+											<input class="form-control anim" type="date" name="date" value="dob" required>
+										</div>
+									</div>
+									<div>
+										<div class="col-12 mb-3">
+											<input class="form-check-input anim" type="radio" name="gender" value="male" id="male" required>
+											<label for="male" class="form-check-label anim">Male</label>
+											<input class="radio form-check-input anim" type="radio" name="gender" value="female" id="female" required>
+											<label for="female" class="form-check-label anim">Female</label>
+										</div>
+									</div>
+									<div>
+										<div class="col-12 mb-3">
+											<select class="form-select form-select-lg mb-3 anim" aria-label=".form-select-lg example" name="state">
+												  <option value="" selected>State</option>
+												  {% for s in state %}
+												  <option value="{{s.state_id}}">{{s.state_name}}</option>
+												  {% endfor %}
+												 
+											</select> 
+										</div>
+									</div>
+									<div>
+										<input type="checkbox" name="agree" id="agree" class="form-check-input anim" required>
+										<span class="mb-2">i agree to the terms and condition of the site</span>
+									</div>
+									<div>
+										<button type="submit" class="btn btn-success anim mt-2" id="btn" disabled="disabled">Sign Up</button>
+									</div>
+								</div>
+							</form>
+		</div>
+		<div class="col-md-6 mt-5">
+			<div class="col-md-12">
+				<p>Existing User <a href="{{url_for('login')}}" class="btn btn-outline-warning">click here</a>to login</p>
+			</div>
+			<div class="col-md-12" style="min-height:50px">
+				<img src="{{url_for('static', filename='images/cake2.png')}}" alt="cake" class="img-fluid thumbnail">
+			</div>
+		</div>
+	</div>
+	{% endblock %}
+	<!-- carosel ends-->
+	

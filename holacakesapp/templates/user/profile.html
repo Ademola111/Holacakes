@@ -1,0 +1,119 @@
+{% extends 'user/profilebase.html' %}
+
+{% block title %}
+	HolaCakes|profile
+{% endblock %}
+
+{% block content %}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-2 mt-5" >
+				<div class="col-md-12 mb-3">
+					{% for p in pic %}
+					{% if p.pic_url =="" %}
+					<p><img src="{{url_for('static', filename='images/profile.png')}}" alt="{{user.user_fname}} pic" class="img-fluid rounded-circle"></p>
+					{% else %}
+					<p>
+						<img src="/static/images/profilepic/{{p.pic_url}}" alt="{{user.user_fname}} pic"  class="img-fluid rounded-circle">
+					</p>
+					{% endif %}
+					{% endfor %}
+					<form action="{{url_for('profilepic')}}" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+						<input type="file" id="myFile" name="filename" class="form-control">
+					
+						<button type="submit" id="profilepic" class="btn btn-success">Upload</button>
+					</form>
+				</div>
+				<div class="col-md-12" id='profile'><a href="{{url_for('profile')}}"><p class="orderstyle"><i class="fa fa-user-plus"></i> Profile</p></a>
+				</div>
+				<div class="col-md-12"id="Orders"><a href="{{url_for('myorder')}}"><p class="orderstyle"><i class="fa fa-cart-shopping"></i> Orders</p></a>
+				</div>
+				<div class="col-md-12" id="orderdetail"><a href="{{url_for('order_detail')}}"><p class="orderstyle"  ><i class="fa fa-arrow-down-a-z"></i> Order Details</p></a>
+				</div>
+				<div class="col-md-12" id="payment"><a href="{{url_for('mypayment')}}"><p class="orderstyle"><i class="fa fa-credit-card"></i> Payemnt History</p></a>
+				</div>
+				<div class="col-md-12" id="review"><a href="{{url_for('reviews')}}"><p class="orderstyle"><i class="fa-solid fa-star-sharp"></i> Reviews</p></a>
+				</div>
+				<div class="col-md-12" id="deliver"><a href="{{url_for('delivery_status')}}"><p class="orderstyle"><i class=""></i> Delivery</p></a>
+				</div>
+			</div>
+			<div class="col-md-10">
+				{% with m = get_flashed_messages() %}
+				{% for i in m %}
+				<p class="fw-4">{{i}}</p>
+				{% endfor %}
+				{% endwith %}
+				<div class="container" id="profilediv">
+					<div class="row mt-5">
+						<div class="col">
+							<h1 class="border-bottom border-info border-3 text-center">PROFILE</h1>
+							<h2>Welcome! {{user.user_fname}} </h2> 
+							
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<form  class="row g-3 align-item-start " action="{{url_for('update_profile')}}" method="POST">
+								<div class="col formwrap bg-light mt-5">
+									<div class="row mb-3">
+										<div class="col-12 mt-3">
+											<input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+											<input class="form-control" type="text" name="fname"  value="{{user.user_fname}}">
+										</div>
+									</div>
+									<div class="row mb-3">
+										<div class="col-12 mt-3">
+											<input class="form-control" type="text" name="lname" value="{{user.user_lname}}">
+										</div>
+									</div>
+									<div>
+										<div class="col-12 mb-3">
+											<input class="form-control" type="email" name="email" value="{{user.user_email}}">
+										</div>
+									</div>
+									<div>
+										<div class="col-12 mb-3">
+											<input class="form-control" type="password" name="password" value="{{user.user_pass}}">
+										</div>
+									</div>
+									<div>
+										<div class="col-12 mb-3">
+											<input class="form-control" type="text" name="address" value="{{user.user_address}}">
+										</div>
+									</div>
+									<div>
+										<div class="col-12 mb-3">
+											<input class="form-control" type="text" name="phone" value="{{user.user_phone}}">
+										</div>
+									</div>
+									<div>
+										<div class="col-12 mb-3">
+											<select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="state">
+												<option value="" selected>State</option>
+													{% for s in state %}
+														<option value="{{s.state_id}}">{{s.state_name}}</option>
+													{% endfor %}			 
+											</select> 
+										</div>
+									</div>
+												
+										<div class="row">
+											<div class="col-md-6">
+											<button type="submit" class="btn btn-success mt-2 " id="btnupdate">Update</button>
+											</div>
+											<div class="col-md-6">
+											<a href="{{url_for('delete_account')}}" class="btn btn-danger mt-2" id="del">Delete Account</a>
+											</div>
+										</div>
+								</form>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	</div>
+{% endblock %}

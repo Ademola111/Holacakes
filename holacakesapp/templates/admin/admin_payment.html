@@ -1,0 +1,55 @@
+{% extends 'admin/adminbase.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="row">
+            <div class="col text-start mt-2">
+                <a href="{{url_for('admin_dashboard')}}"><button class="mb-3 btn btn-dark">Return To Dashboard</button></a>
+                {% with m = get_flashed_messages() %}
+				{% for i in m %}
+				<p class="fw-4">{{i}}</p>
+				{% endfor %}
+				{% endwith %}
+            </div>
+        </div>
+        <div class="container table-responsive">
+        <div class="col-md-12">
+            <h1 class="text-center">ALL PAYMENT</h1>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-primary table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>Date</th>
+                        <th>Reference No</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for o in owo %}
+                    <tr>
+                        <td>{{loop.index}}</td>
+                        <td>{{o.payment_transdate}}</td>
+                        
+                        <td>{{o.payment_transNo}}</td>
+                        <td>{{o.payment_amount}}</td>
+                        <td>{{o.payment_status}}</td>
+                        </form>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

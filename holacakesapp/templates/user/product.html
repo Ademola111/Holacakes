@@ -1,0 +1,37 @@
+{% extends 'user/profilebase.html' %}
+
+{% block title %}
+    HolaCakes|Cakes
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+       
+        <div class="col-md-3 mt-5">
+            <img src="/static/images/{{prod.product_image_url}}" class="card-img-top img-fluid" alt="birthday cake">
+        </div>
+        <div class="col-md-9 mt-5">
+            
+            <div>
+                <p><b>Name:</b> {{prod.product_name}} </p>
+                <p><b>Description:</b> {{prod.product_description}} </p>
+                <p><b>Price:</b> {{prod.product_price}} </p>
+                
+                <form action="{{url_for('addtocart')}}" method="POST">
+                    <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                    <input type="hidden" id="product_id" name="product_id" value="{{prod.product_id}}"><br>
+                    <strong><label for="address">Shipping address</label></strong><br>
+                    <input id="address" class="form-control" type="text" name="address" placeholder="">
+                    <strong><label for="number">Quantity</label></strong>
+                    <button type="button" class="btn btn-dark" onclick="decrement()">-</button>
+                    <input id="demoInput"  type="number" min="1" name="qty">
+                    <button type="button" class="btn btn-success" onclick="increment()">+</button><br>
+                    <button type="submit"  class="btn btn-warning form-control mt-2" id="addtocart">ADD TO CART</button>
+                </form>
+                <a href="{{url_for('showcart')}}" class="btn btn-info mt-2 mb-3" style="display:block;">VIEW CART</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

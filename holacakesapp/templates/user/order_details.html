@@ -1,0 +1,96 @@
+{% extends 'user/profilebase.html' %}
+
+{% block title %}
+	HolaCakes|Order details
+{% endblock %}
+
+{% block content %}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-2 mt-5" >
+				<div class="col-md-12 mb-3">
+					{% for p in pic %}
+					{% if p.pic_url =="" %}
+					<p><img src="{{url_for('static', filename='images/profile.png')}}" alt="{{user.user_fname}} pic" class="img-fluid rounded-circle"></p>
+					{% else %}
+					<p>
+						<img src="/static/images/profilepic/{{p.pic_url}}" alt="{{user.user_fname}} pic"  class="img-fluid rounded-circle">
+					</p>
+					{% endif %}
+					{% endfor %}
+					<form action="{{url_for('profilepic')}}" method="POST" enctype="multipart/form-data">
+						<input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+						<input type="file" id="myFile" name="filename" class="form-control">
+					
+						<button type="submit" id="profilepic" class="btn btn-success">Upload</button>
+					</form>
+				</div>
+				<div class="col-md-12" id='profile'><a href="{{url_for('profile')}}"><p class="orderstyle"><i class="fa fa-user-plus"></i> Profile</p></a>
+				</div>
+				<div class="col-md-12"id="Orders"><a href="{{url_for('myorder')}}"><p class="orderstyle"><i class="fa fa-cart-shopping"></i> Orders</p></a>
+				</div>
+				<div class="col-md-12" id="orderdetail"><a href="{{url_for('order_detail')}}"><p class="orderstyle"  ><i class="fa fa-arrow-down-a-z"></i> Order Details</p></a>
+				</div>
+				<div class="col-md-12" id="payment"><a href="{{url_for('mypayment')}}"><p class="orderstyle"><i class="fa fa-credit-card"></i> Payemnt History</p></a>
+				</div>
+				<div class="col-md-12" id="review"><a href="{{url_for('reviews')}}"><p class="orderstyle"><i class="fa-solid fa-star-sharp"></i> Reviews</p></a>
+				</div>
+				<div class="col-md-12" id="deliver"><a href="{{url_for('delivery_status')}}"><p class="orderstyle"><i class="fa-solid fa-star-sharp"></i> Delivery</p></a>
+				</div>
+			</div>
+			<div class="col-md-10" id="orderdetaildiv">
+				{% with m = get_flashed_messages() %}
+				{% for i in m %}
+				<p class="alert alert-success">{{i}}</p>
+				{% endfor %}
+				{% endwith %}
+			
+				<div class="container-fluid table-responsive">
+					<div class="row mt-5">
+						<div class="col text-center">
+							<h1 class="border-bottom border-info border-3">MY ORDER DETAILS</h1>
+							
+						</div>
+					</div>
+				<div class="container table-responsive">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="col formwrap bg-light mt-5">
+								<div class="row mb-3">
+									<table class="table table-primary table-hover table-stripped">
+										<thead>
+											<tr>
+												<td>S/N</td>
+												<td>Date</td>
+												<td>Item Image</td>
+												<td>Item Name</td>
+												<td>Unit Price</td>
+												<td>Quantity</td>
+												<td>Total</td>
+												<td>Shipping address</td>
+											</tr>
+										</thead>
+										<tbody>
+											{% for x,y in order %}
+											<tr>
+												<td>{{loop.index}}</td>
+												<td>{{x.order_detail_date}}</td>
+												<td><img src="/static/images/{{y.product_image_url}}" alt="{{y.product_name}}" width="100"></td>
+												<td>{{y.product_name}}</td>
+												<td>{{x.orderdetail_amount}}</td>
+												<td>{{x.order_detail_Qty}}</td>
+												<td>{{x.order_detail_total_amount}}</td>
+												<td>{{x.order_shipping_address}}</td>
+											</tr>
+											{% endfor %}
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

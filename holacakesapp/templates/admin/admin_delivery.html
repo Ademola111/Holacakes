@@ -1,0 +1,66 @@
+{% extends 'admin/adminbase.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="row">
+            <div class="col text-start mt-2">
+                <a href="{{url_for('admin_dashboard')}}"><button class="mb-3 btn btn-dark">Return To Dashboard</button></a>
+                {% with m = get_flashed_messages() %}
+				{% for i in m %}
+				<p class="fw-4">{{i}}</p>
+				{% endfor %}
+				{% endwith %}
+            </div>
+        </div>
+
+        <div class="container">
+        <div class="col-md-12">
+            <h1 class="text-center">ALL DELIVERY</h1>
+            
+        </div>
+        <div class="container-fluid table-responsive">
+            <table class="table table-primary table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>Delivery Date</th>
+                        <th>Username</th>
+                        <th>Delivery Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ko,ot in delv %}
+                    <tr>
+                        <td>{{loop.index}}</td>
+                        <td>{{ko.delivery_date}}</td>
+                        <td>{{ot.user_fname}} {{ot.user_lname}}</td>
+                        <form action="{{url_for('admin_delivery_status')}}" method="POST">
+                        <td>
+                            <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                            <input type="hidden" name="delivery" value="{{ko.delivery_id}}">
+                            <select name="deliverystatus">
+                                <option value="{{ko.delivery_status}}">{{ko.delivery_status}}</option>
+                                <option value="on transit">On Transit</option>
+                                <option value="delivered">Delivered</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button type="submit" id="status2" class="btn btn-warning">Update</button>
+                        </td>
+                        </form>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock %}

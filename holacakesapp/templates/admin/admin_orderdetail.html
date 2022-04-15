@@ -1,0 +1,58 @@
+{% extends 'admin/adminbase.html' %}
+{% block title %}
+Holacakes|Admin|Order_detail
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="row">
+            <div class="col text-start mt-2">
+                <a href="{{url_for('admin_dashboard')}}"><button class="mb-3 btn btn-dark">Return To Dashboard</button></a>
+                {% with m = get_flashed_messages() %}
+				{% for i in m %}
+				<p class="fw-4">{{i}}</p>
+				{% endfor %}
+				{% endwith %}
+            </div>
+        </div>
+    <div class="container table-responsive">
+        <div class="col-md-12">
+            <h1 class="text-center">ALL ORDER DETAILS</h1>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-primary table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Quantity</th>
+                        <th>Total Amount</th>
+                        <th>Vat</th>
+                        <th>Grand Total</th>
+                        <th>Shipping Address</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i,j in det %}
+                    <tr>
+                        <td>{{loop.index}}</td>
+                        <td>{{i.order_detail_date}}</td>
+                        <td>{{i.orderdetail_amount}}</td>
+                        <td>{{i.order_detail_Qty}}</th>
+                        <td>{{i.order_detail_total_amount}}</td>
+                        <td>{{i.VAT}}</td>
+                        <td>{{i.grand_total}}</td>
+                        <td>{{i.order_shipping_address}}</td>
+                        <td>{{j.order_status}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock %}

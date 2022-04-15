@@ -1,0 +1,29 @@
+{% extends 'user/base.html' %}
+
+{% block title %}
+HolaCakes|Product
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  
+  <div class="row mt-3 mb-3">
+    {% for ba in biri %}
+      <div class="col-md-3 mt-3 ">
+          <div class="card">
+            
+            <a href="/product/{{ba.product_id}}"><img src="/static/images/{{ba.product_image_url}}" class="img-fluid card-img-top" alt="birthday cake"></a>
+            
+            <div class="card-body text-light" style="background-color: black;">
+              <h6 class="card-title">{{ba.product_name}}</h6>
+              <p class="card-text"> {{ba.product_description}}</p>
+              <p class="card-text">{{ba.product_price}}</p>
+              <a href="/product/{{ba.product_id}}" class="buy">Buy</a>
+              </p>
+            </div>
+          </div>
+      </div>  
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'admin/adminbase.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="row">
+            <div class="col text-start mt-2">
+                <a href="{{url_for('admin_dashboard')}}"><button class="mb-3 btn btn-dark">Return To Dashboard</button></a>
+                {% with m = get_flashed_messages() %}
+				{% for i in m %}
+				<p class="fw-4">{{i}}</p>
+				{% endfor %}
+				{% endwith %}
+            </div>
+        </div>
+        <div class="col-md-12">
+            <h1 class="text-center">ALL USERS</h1>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-primary table-striped table-hover col-md-12">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>Full Name</th>
+                        <th>E-mail</th>
+                        <th>Date of Birth</th>
+                        <th>Phone No</th>
+                        <th>Contact Address</th>
+                        <th>Gender</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for u in user %}
+                    <tr>
+                        <td>{{loop.index}}</td>
+                        <td>{{u.user_fname}} {{u.user_lname}}</td>
+                        <td>{{u.user_email}}</td>
+                        <td>{{u.user_dob}}</td>
+                        <td>{{u.user_phone}}</td>
+                        <td>{{u.user_address}}</td>
+                        <td>{{u.user_gender }}</td>
+                        <td>{{u.mystateobj.state_name}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

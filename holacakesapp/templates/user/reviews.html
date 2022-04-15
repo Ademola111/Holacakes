@@ -1,0 +1,35 @@
+{% extends 'user/profilebase.html' %}
+
+{% block title %}
+    HolaCakes|Reviews
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!--reviews-->
+    <div class="row">
+        <div class="col-md-12 mt-5" id="com">
+            
+            <h4>Let here from you.</h4>
+            <p>Kindly share your experience with us on our mode of service delivery.<br> <b class="text-danger">Note</b> your contribution goes a long way in improving our customer service delivery</p>
+            <form action="{{url_for('reviews')}}" method="POST">
+                <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                <textarea class="form-control" id="comment" name="comment" cols=80 rows=10></textarea><br>
+                <button type="submit" class="btn btn-outline-success mt-2" id="btnpost">Post a Review</button>
+            </form>
+        </div>
+        {% for r in revi %}
+        <div id="mycomment" style="min-height:50px; ">
+            <div style="background-color: rgb(141, 141, 236);">
+                <span><b>Name:</b> {{r.userreviewobj.user_fname}}</span><br>
+                <spam><b>Date:</b> {{r.reviews_date}}</spam>
+                <div style="background-color: rgb(255, 255, 255);">
+                <span><b>Comment:</b> {{r.reviews_comment}} by</span><hr>
+                </div>
+            </div>           
+           
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

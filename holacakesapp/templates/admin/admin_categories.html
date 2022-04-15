@@ -1,0 +1,90 @@
+{% extends 'admin/adminbase.html' %}
+
+{% block title %}
+    HolaCakes|Admin|Product|Categories
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 text-start mt-2">
+            <a href="{{url_for('admin_dashboard')}}"><button class="mb-3 btn btn-dark">Return To Dashboard</button>  </a>
+        </div>
+        <div class="col-md-6 text-end mt-2">
+            <!-- Button trigger modal -->
+        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add Category
+        </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">List of Product Categories</h1>
+            {% with a = get_flashed_messages() %}
+            {% if m %}
+            <p class="alert alert-success">{{m}}</p>
+            {% endif %}
+            {% endwith %}
+        </div>
+        <!--modal start here-->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="col-md-12">
+                <form action="{{url_for('submit_admin_categories')}}" method="POST">
+                    <div class="row">
+                        <div class="col mt-3">
+                            <label>Product Name</label>
+                            <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                            <input type="text" id="addcategory" name="addcategory" class="form-control" placeholder="Product name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mt-3">
+                            <button class="btn btn-dark form-control">Add Categories</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+    <div class="container table-responsive">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <table class="table table-primary table-center">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Category name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%  for m in cati %}
+                        <tr>
+                            <td>{{loop.index}}</td>
+                            <td>{{m.product_cat_name}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

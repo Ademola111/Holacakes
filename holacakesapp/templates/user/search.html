@@ -1,0 +1,25 @@
+{% extends 'user/profilebase.html' %}
+{% block title %}
+holacakes|search
+{% endblock %}
+
+{% block content %}
+<div class="container table-responsive">
+    <table class="table table-hover table-primary table-stripped">
+        <tbody>
+            {% if prod %}
+            {% for search in prod %}
+            <tr>
+                <td><a href="/product/{{search.product_id}}"><img src="/static/images/{{search.product_image_url}}" alt="{{search.product_name}}" width="100"></a></td>
+                <td><h4><a href="/product/{{search.product_id}}">{{search.product_name}}</a></h4></td>
+                <td>{{search.product_description}}</td>
+                <td>{{search.product_price}}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <td colspan="4"><p class="text-center fs-3">...Opps! No search found.</p><p class="text-center">Click <a href="{{url_for('home')}}">Home</a> to return to homepage</p></td>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

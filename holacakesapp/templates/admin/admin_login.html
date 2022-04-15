@@ -1,0 +1,42 @@
+{% extends 'admin/adminbase.html' %}
+
+{% block title %}
+    Holacakes|Admin|Login
+{% endblock %}
+
+{% block content %}
+<div class="row mb-5 mt-5">
+    <div class="col-md-8" style="min-height:50px ">
+        <img src="{{url_for('static', filename='images/cake1.png')}}" alt="cake" class="img-fluid thumbnail">
+    </div>
+    <div class="col-md-4">
+        {% with m = get_flashed_messages() %}
+				{% for i in m %}
+				<p class="fw-4">{{i}}</p>
+				{% endfor %}
+				{% endwith %}
+        <form  class="row g-3 align-item-start " action="{{url_for('admin_login_submit')}}" method="POST">
+                <div class="col formwrap bg-light mt-5">
+                    <h3>Login</h3>									
+                        <div>
+                            <p id="errormessage"></p>
+                            <div class="col-12 mb-3">
+                                <input class="form-control" id="email" type="email" name="email" placeholder="E-mail address or Username">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="col-12 mb-3">
+                                <input class="form-control" id="pwd" type="password" name="password" placeholder="">
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit" id="logbtn" class="btn btn-success">Login</button>
+                            <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                           <span>Forgotten Password</span>
+                        </div>
+                        {#<p>New Admin <a href="{{url_for('admin_signup')}}">click here</a>to signup</p>#}
+                </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

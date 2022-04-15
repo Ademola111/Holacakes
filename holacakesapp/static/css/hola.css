@@ -1,0 +1,368 @@
+/*kinsha css file*/
+@typeface{
+	font-family:holacakes_extrabold;
+	src:url("font/Poppins-ExtraBold.woff2") format("woff");
+}
+
+@typeface{
+	font-family:holacakes_light;
+	src:url("font/Poppins-Light.woff2") format("woff");
+}
+
+@typeface{
+	font-family:holacakes_medium;
+	src:url("font/Poppins-medium.woff2") format("woff");
+}
+
+*{
+	
+	box-sizing:border-box;
+}
+
+
+#logo{
+	font-family: holacake_extrabold;
+	color:rgb(226,120,33)
+}
+#logo2{
+	font-family: holacake_extrabold;
+	color:rgb(225,225,225)
+}
+
+#container-fluid{
+ background-color: rgb(9, 19, 114); /*5, 12, 71*/
+}
+
+#searchbox{
+	padding:2px;
+}
+
+#socialmedia{
+	padding:30px;
+}
+
+.fafont{
+	font-size: 25px;
+}
+
+#search{
+	background-color:rgb(226,120,33);
+	padding:10px;
+	color:black;
+	font-size: 15px;
+	border-radius:5px 10px;
+	width: 100px;
+	margin-top: 5px;
+}
+
+input{
+	padding:10px;
+	color:black;
+	font-size:18px;
+}
+
+#navbar{
+	font-family:"holacakes_medium", corbel, arial, sans-serif !important;
+	background-color:black;	
+
+}
+
+#sticky{
+	position:sticky;
+	top:0px;
+	z-index: 1;
+}
+
+div ul li a{
+	font-family:"holacakes_medium", corbel, arial, sans-serif !important;
+	margin-right: 40px;
+}
+
+.dropdown:hover{
+background-color:rgb(226,120,33) !important;
+}
+
+#navbar ul li{
+	background-color:black;	
+}
+
+#navbar ul li:hover{
+	background-color:rgb(226,120,33);
+}
+
+#navbar a{
+	text-decoration:none;
+	color:white;
+}
+
+span a{
+	text-decoration: none;
+	color: white;
+}
+
+span a:hover{
+	color:rgb(226,120,33);
+}
+
+
+
+
+/*section script*/
+#banner{
+	background-image:url("../kinsha/background2.jpg");
+	background-size:cover;
+	min-height:400px;
+	text-align:center;
+	font-family:"kinsha-bold", corbel, sans-serif;
+}
+
+.paragraph{
+	font-size:15px;
+	color:white;
+	padding-left:10px;	
+}
+
+
+
+/*second section*/
+
+.buy, #add, #checkout{
+	font-family:"holacakes_medium", corbel, arial, sans-serif !important;
+	color:white;
+	background-color:rgb(226,120,33);
+	padding:10px;
+	margin:10px;
+	border-radius:5px 5px;
+	text-decoration: none;
+}
+.buy:hover{
+	font-family:"holacakes_medium", corbel, arial, sans-serif !important;
+	background-color:rgb(0,0,0);
+	color: rgb(226,120,33);
+}
+
+#add:hover, #checkout:hover{
+	font-family:"holacakes_medium", corbel, arial, sans-serif !important;
+	background-color:rgb(0,0,0); 
+	padding:2px; 
+	color:rgb(226,120,33);
+	padding:10px;
+	margin:10px;
+}
+
+#demoInput{
+	width:80px;
+}
+/*footer section */
+#foot{
+	background-color:rgb(5, 12, 71) ;
+	color: white;
+	font-family: "holacakes_light" corbel, arial, sans-serif;
+}
+
+
+h5 {
+	margin:10px;
+	padding:10px;
+	background-color:rgb(226,120,33);
+}
+
+p a{
+	text-decoration:none;
+	color:black;
+}
+
+p a:hover{
+	color:rgb(226,120,33);
+}
+
+/*about us section*/
+[alt="Founder Picture"]{
+	border:8px solid rgb(48, 42, 38);
+	margin:10px;
+}
+
+.justify{
+	text-align:justify;
+}
+
+
+.fid{
+	text-align:left;
+	padding:10px;
+	color:black;
+	font-size:18px;
+}
+
+[type="submit"], [for="name"], [for="email"], [for="subject"], [for='body']{
+	padding:10px;
+	color:black;
+	font-size:18px;
+	width:20%;
+	background-color:rgb(245,184,65);
+	font-weight:bold;
+	border-radius:5px 10px;
+}
+
+/*special order script*/
+
+.vom, form{
+	text-align:left;
+	padding:8px;
+	color:black;
+	font-size:18px;
+	margin:8px;
+}
+
+.thankyou{
+	text-align:center;
+	color:rgb(266,120,33);
+}
+
+.cakes{
+	display:flex;
+	flex-direction:row;
+	justify-content:space-between;
+	background-color:pink;
+}
+
+.orderstyle{
+	background-color:rgb(120, 71, 253);
+	padding:6px;
+	color: white !important;
+	text-decoration: none !important;
+}
+
+.orderstyle:hover{
+	background-color:rgb(226,120,33);
+	padding:6px;
+	margin:10px;
+	color:black !important;
+	text-decoration: none !important;
+}
+
+/*admin style section*/
+#admindashboardsidebar{
+	background-color: rgba(138, 138, 238, 0.5);
+}
+.admindashboardsidebar:hover{
+	background-color: rgba(245, 185, 65, 0.61);
+	margin:auto;
+	padding:10px;
+	font-family:"holacakes_medium", corbel, arial, sans-serif !important;
+}
+#products{
+	background-color:rgba(243, 137, 50, 0.514);
+	height:150px;
+	border-radius: 10px;
+	margin:auto;
+	font-family:"holacakes_medium", corbel, arial, sans-serif !important;
+}
+
+#prodcat{
+	background-color:rgba(133, 240, 46, 0.555);
+	height:150px;
+	border-radius: 10px;
+	margin:auto;
+	font-family:"holacakes_medium", corbel, arial, sans-serif !important;
+}
+
+#prodImg{
+	background-color:rgba(182, 240, 46, 0.63);
+	height:150px;
+	border-radius: 10px;
+	margin:auto;
+	font-family:"holacakes_medium", corbel, arial, sans-serif !important;
+}
+
+#OrderProd{
+	background-color:rgba(19, 201, 162, 0.466);
+	height:150px;
+	border-radius: 10px;
+	margin:auto;
+	font-family:"holacakes_medium", corbel, arial, sans-serif !important;
+}
+
+#orderDtl{
+	background-color:rgba(10, 86, 185, 0.466);
+	height:150px;
+	border-radius: 10px;
+	margin:auto;
+	font-family:"holacakes_medium", corbel, arial, sans-serif !important;
+}
+
+#delivery{
+	background-color:rgba(168, 12, 207, 0.363);
+	height:150px;
+	border-radius: 10px;
+	margin:auto;
+	font-family:"holacakes_medium", corbel, arial, sans-serif !important;
+}
+
+#paymenti{
+	background-color:rgba(207, 12, 132, 0.459);
+	height:150px;
+	border-radius: 10px;
+	margin:auto;
+	font-family:"holacakes_medium", corbel, arial, sans-serif !important;
+}
+
+#reviews{
+	background-color:rgba(223, 9, 176, 0.726);
+	height:150px;
+	border-radius: 10px;
+	margin:auto;
+	font-family:"holacakes_medium", corbel, arial, sans-serif !important;
+}
+
+#users{
+	background-color:rgba(196, 75, 95, 0.5);
+	height:150px;
+	border-radius: 10px;
+	margin:auto;
+	font-family:"holacakes_medium", corbel, arial, sans-serif !important;
+}
+
+#prodbut, #catbut, #imgbut, #ordbut, #orddtlbut, #deldbut, #paybut, #revbut, #userbut{
+	position:relative;
+	left:60px;
+	top:50px;
+	background-color: rgba(148, 98, 5, 0.562);
+	
+}
+
+#prodbut, #catbut, #imgbut, #ordbut, #orddtlbut, #deldbut, #paybut, #revbut, #userbut{
+	color:white;
+	text-decoration:none;
+}
+
+/* styling update cart */
+#order2{
+	width:100%;
+	font-weight: normal;
+	font-size: medium;
+}
+#remove{
+	width:100% !important;
+	font-weight: normal;
+	font-size: medium;
+}
+#check a, #clear a{
+	padding:10px;
+	width:100% !important;
+	color:black;
+	font-size:20px;
+	background-color:rgb(255, 115, 0);
+	font-weight:bold;
+	border-radius:5px;
+	text-align: center;
+	text-decoration: none !important;
+}
+
+#profilepic, #status,#status2, #btnupdate, #del, #btnpost,#delsub{
+	width: 100%;
+}
+
+a{
+	text-decoration: none !important;
+}

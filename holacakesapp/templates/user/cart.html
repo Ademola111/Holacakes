@@ -1,0 +1,71 @@
+{% extends 'user/profilebase.html' %}
+
+{% block title %}
+    add to Cart
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row mt-2">
+        <div class="col-md-12">
+            {% with m = get_flashed_messages() %}
+            {% if m %}
+            {{m}}
+            {% endif %}
+            {% endwith %}
+        <div class="container-fluid table-responsive">
+            <table class="table table-primary table-center">
+                <thead>
+                    <tr>
+                    <th class="text-start">S/N</th>
+                    <th class="text-start">Image</th>
+                    <th class="text-start">Cart Item</th>
+                    <th class="text-start">Unit Amount</th>
+                    <th class="text-start">Quantity</th>
+                    <th class="text-start">Shipping Address</th>
+                    <th class="text-start">Sub Total</th>
+                    {#<th class="text-center">Update</th>#}
+                    <th class="text-center">Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, prod in session['shoppingcart'].items() %}
+                    <tr>
+                    <td class="text-start">{{loop.index}}</td>
+                    <td class="text-start"><img src="/static/images/{{prod.image}}" alt="{{prod.name}}" width="100"></td>
+                    <td class="text-start">{{prod.name}}</td>
+
+                    <form action="{{url_for('order_product')}}" method="POST">
+                    <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                    {#<input type="hidden" name="product_id" value="{{prod.product_id}}">#}
+                    <td id="amt" class="text-start"><input type="text" value='{{"%0.2f"|format(prod.price)}}' readonly="readonly"></td>
+                    <td id="qty" class="text-start"><input type="text" value="{{prod.quantity}}" readonly="readonly"></td>
+                    <td id="ship" class="text-start"><input type="text" name="ship" value="{{prod.shipping}}" readonly="readonly"></td>
+                    {% set SubTotal = prod.quantity|int * prod.price|float %}
+                    <td id="sb" class="text-start"><input type="text" value='{{"%0.2f"|format(SubTotal)}}' readonly="readonly"></td>
+                    {#<td><button type="submit" id="update">Update</button></td>
+                    </form>#}
+
+                    <td><a href="{{url_for('remove_cart', id=key)}}"><span class="btn btn-danger text-center" id="remove"> Remove</span></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="container-fluid table-responsive">
+            <table class="table table-striped table-hover">
+                <tr>
+                    <td colspan="2"><h4><label for="vat">VAT: </label><input type="text" id="vat" value="{{vat}}" readonly="readonly"></h4></td>
+                    <td colspan="3"><h4><label for="gtotal">Grand Total: </label><input type="text" id="gtotal" name="gtotal" value='{{"%0.2f"|format(grandtotal)}}' readonly="readonly"></h4></td>
+                    <td><button type="submit" id="order2">Order Now</a></button></td>
+                    
+                    <td colspan="2"><h4 id="clear" class="me-4 btn btn"><a href="{{url_for('clear_cart')}}">Clear Cart</a></h4></td>
+                </tr>
+            </form>
+            </table>
+        </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'user/profilebase.html' %}
+
+{% block title %}
+    Cart
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="{{url_for('static', filename='images/birthdaycake.png')}}" alt="cake" class="img-fluid">
+                    </div>
+                    <div class="col-md-8">
+                        <h2>Product Names</h2>
+                        <p>Description</p>
+                        <p>Price</p>
+                    </div>
+                
+                    <div class="col-md-12">
+                    <button class="btn btn-dark" onclick="decrement()">-</button>
+                    <input id=demoInput type=number min="1">
+                    <button class="btn btn-success" onclick="increment()">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="col-md-12">
+                    <h4>Cart Summary</h4>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-8">
+                        <p>Sub Total</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p>&#8358;4000</p>
+                    </div>
+                </div>
+                <button class="btn btn-warning" id="checkout">Checkout</button>
+            </div>
+        </div>
+</div>
+{% endblock %}

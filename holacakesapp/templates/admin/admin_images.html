@@ -1,0 +1,43 @@
+{% extends 'admin/adminbase2.html' %}
+
+{% block title %}
+    HolaCakes|Admin_Dashboard
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 text-start mt-2">
+            <a href="{{url_for('admin_dashboard')}}"><button class="mb-3 btn btn-dark">Return To Dashboard</button>  </a>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <h1 class="text-center text-brown">ALL PROFILE PICTURES</h1>
+    </div>  
+</div>
+    <div class="container table-responsive">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-primary table-center table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Profile Picture</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%  for f in img %}
+                        <tr>
+                            <td>{{loop.index}}</td>
+                            <td><img src="/static/images/profilepic/{{f.pic_url}}" alt="{{f.user_fname}} pic" width="100"> </td>
+                            <td>{{f.user_fname}} {{f.user_lname}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

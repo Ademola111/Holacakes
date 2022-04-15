@@ -1,0 +1,95 @@
+{% extends 'user/profilebase.html' %}
+
+{% block title %}
+    HolaCakes|order
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 mt-5">
+            <img src="{{url_for('static', filename='images/wed4.png')}}" class="card-img-top" alt="birthday cake">
+        </div>
+        <div class="col-md-8">
+            <form  class="row g-3 align-item-start " action="{{url_for('submit_custom')}}" method="POST">
+                <div class="col formwrap bg-light mt-5">
+                <h3>Order for desired specification</h3>
+                <span style="color:red"><srong><em>Note!:</em> Product requires 3 days pre-order notice.</srong></span>
+                <div class="row mb-3">
+                    <div class="col-12 mt-3">
+                        <label for="custom" class="form-check-label anim">Cake Name</label>
+                        <input class="form-control anim" type="text" name="cakename" placeholder="Cake Message" required>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-12 mb-3">
+                        <select class="form-select form-select-lg mb-3 anim" aria-label=".form-select-lg example" name="cakecat">
+                              <option selected value="">Cake Category</option>
+                              {% for m in user_productcatid %}
+                              <option value="{{m.product_catid}}">{{m.product_cat_name}}</option>
+                              {% endfor %}
+                              
+                        </select> 
+                    </div>
+                </div>
+                    <div>
+                        <div class="col-12 mb-3">
+                            <select class="form-select form-select-lg mb-3 anim" aria-label=".form-select-lg example" name='cakesize'>
+                                  <option selected value="" >Cake Size</option>
+                                  <option value="5">5"</option>
+                                  <option value="6" >6"</option>
+                                  <option value="7">7"</option>
+                                  <option value="8">8"</option>
+                                  <option value="9">9"</option>
+                                  <option value="10">10"</option>
+                                  <option value="11">11"</option>
+                                  <option value="12">12"</option>
+                                  <option value="13">13"</option>
+                                  <option value="14">14"</option>
+                                  <option value="15">15"</option>
+                            </select> 
+                        </div>
+                    </div>
+                    <div>
+                        <div class="col-12 mb-3">
+                            <select class="form-select form-select-lg mb-3 anim" aria-label=".form-select-lg example" name="cakeflavour">
+                                  <option selected value="">Cake Flavour</option>
+                                  <option value="fundant">Fundant</option>
+                                  <option value="chocolate" >Chocolate</option>
+                                  <option value="strawberry">Strawberry</option>
+                                  <option value="butter icing">Butter Icing</option>
+                            </select> 
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12 mt-3">
+                            <label for="custom" class="form-check-label anim">Cake Message</label>
+                            <input class="form-control anim" type="text" name="cakemessage" placeholder="Cake Message" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="custom" class="form-check-label anim">Description</label><br>
+                        <textarea cols="80" rows="10" name="description"></textarea>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12 mb-3">
+                            <input class="form-check-input anim" type="radio" name="order" value="custom" id="custom">
+                            <label for="custom" class="form-check-label anim">Custom Order</label>
+                            <input class="radio form-check-input anim" type="radio" name="order" value="normal" id="normal">
+                            <label for="normal" class="form-check-label anim">Normal Order</label>
+                        </div>
+                       
+                    </div>
+                    <div>
+                        <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                        <button type="submit" class="btn btn-success anim" id="btn">Submit Order</button>
+                    </div>
+                </div>
+            </form>
+
+
+           
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,152 @@
+{% extends 'admin/adminbase2.html' %}
+
+{% block title%}
+    HolaCakes|Products
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col text-start mt-2">
+            <a href="{{url_for('admin_dashboard')}}"><button class="mb-3 btn btn-dark">Return To Dashboard</button></a>
+        </div>
+        <div class="col-md-6 text-end mt-2">
+            <!-- Button trigger modal -->
+        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add Product
+        </button>
+        </div>
+    </div>
+
+    <div class="container table-responsive">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">List of Product</h1>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-primary table-center">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%  for h in allprod %}
+                    <tr>
+                        <td>{{loop.index}}</td>
+                        <td>{{h.product_name}}</td>
+                        <td>{{h.product_price}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="col-md-12">
+                <form action="{{url_for('submit_admin_product')}}" method="POST" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="row mb-3">
+                            <div class="col-12 mt-3">
+                                <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                                <input class="form-control anim" type="text" name="cakename" placeholder="Name of Cake" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <select class="form-select form-select-lg mb-3 anim" aria-label=".form-select-lg example" name="cakecat">
+                              <option selected value="">Cake Category</option>
+                              {% for k in category %}
+                              <option value="{{k.product_catid}}">{{k.product_cat_name}}</option>
+                              {% endfor %}
+                              
+                        </select> 
+                    </div>
+                    <div class="row">
+                        <div class="col mt-3">
+                            <input type="text" id="productno" name="productno" class="form-control" placeholder="Product Number">
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 mt-3">
+                        <select class="form-select form-select-lg mb-3 anim" aria-label=".form-select-lg example" name='cakesize'>
+                              <option selected value="" >Cake Size</option>
+                              <option value="5">5"</option>
+                              <option value="6" >6"</option>
+                              <option value="7">7"</option>
+                              <option value="8">8"</option>
+                              <option value="9">9"</option>
+                              <option value="10">10"</option>
+                              <option value="11">11"</option>
+                              <option value="12">12"</option>
+                              <option value="13">13"</option>
+                              <option value="14">14"</option>
+                              <option value="15">15"</option>
+                        </select> 
+                    </div>
+                    <div class="col-12 mb-3">
+                        <select class="form-select form-select-lg mb-3 anim" aria-label=".form-select-lg example" name="cakeflavour">
+                              <option selected value="">Cake Flavour</option>
+                              <option value="fundant">Fundant</option>
+                              <option value="chocolate" >Chocolate</option>
+                              <option value="strawberry">Strawberry</option>
+                              <option value="butter icing">Butter Icing</option>
+                        </select> 
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12 mt-3">
+                            <input class="form-control anim" type="text" name="cakemessage" placeholder="Cake Message" required>
+                        </div>
+                    </div>
+                    <div>
+                        <textarea cols="40" rows="10" name="description" class="form-control">Your description here</textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col mt-2">
+                            
+                            <input type="text" id="productprice" name="price" class="form-control" placeholder="Product Price">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <input class="form-check-input anim" type="radio" name="order" value="custom" id="custom">
+                            <label for="custom" class="form-check-label anim">Custom Order</label>
+                            <input class="radio form-check-input anim" type="radio" name="order" value="normal" id="normal">
+                            <label for="normal" class="form-check-label anim">Normal Order</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mt-3">
+                            <label>Image</label>
+                            <input type="file" id="myFile" name="filename" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mt-2">
+                            <button class="btn btn-dark form-control">Add Product</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    </div>
+</div>
+{% endblock %}

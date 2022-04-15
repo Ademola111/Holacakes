@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- media query section -->	
+		<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+		<title>{% block title %} {% endblock%}</title>
+
+		<!-- External stylesheet-->
+		<link href="{{url_for('static', filename='css/hola.css')}}" rel="stylesheet" type="text/css">
+		<!-- bootstrap -->
+		<link href="{{url_for('static', filename='css/css/bootstrap.css')}}" rel="stylesheet" type="text/css">
+
+		<!-- metas-->
+		<meta charset="utf-8">
+		<meta name="description" content="Hola Cakes your No1 cake shop in Nigeria">
+		<meta name="author" content="holacakes.com">
+		<meta name="keywords" content="Hola Cakes, best cake shop in Nigeria, cake, birthday cake, wedding cake, event planner, ceremonies, african dishes, intercontinental  dishes, chocolate cake, dessert cake">
+		
+		<!--facebook meta integration-->
+		<meta property="og:holacakes.com" content="Hola Cakes your No1 cake shop in Nigeria"/>
+		<meta property="og:www.holacakes.com/home" content="website"/>
+		<meta property="og:image" content="images/ceo.jpg"/>
+		<meta property="og:image-width" content="400"/>
+		<meta property="og:image-height" content="300"/>
+		<meta property="og:locale:alternative" content="fr_FR"/>
+		<meta property="og:url" content="www.holacakes.com"/>
+		
+		<!-- twitter meta integeration-->
+		<meta name="twitter.www.holacakes.com" content="@holacakes"/>
+		<meta name="twitter.title" content="@holacakes"/>
+		<meta name="twitter.card" content="Hola Cakesyour No1 cake shop in Nigeria"/>
+		<meta name="twitter.description" content="Hola Cakes your No1 cake shop in Nigeria where yu can get high quality salivating cakes for your next occasion"/>
+		<meta name="twitter.url" content="www.holacakes.com"/>
+
+		<!-- font awesome -->
+		<link href="{{url_for('static', filename='fa/css/all.min.css')}}" rel="stylesheet">
+
+
+		<!-- jquery animation-->
+		<link href="{{url_for('static', filename='css/css/animate.min.css')}}" rel="stylesheet">
+
+		<!-- internal stylesheet-->
+		<style type="text/css">
+			
+			@import url('{{url_for("static", filename="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap")}}');
+			.demacation{
+				border-right: 2px solid orange;
+			}
+		</style>
+	</head>
+	
+<body>
+<div class="container-fluid">
+	<!-- hearder section begins-->
+	<div class="container-fluid" id="container-fluid">
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<h1><span id="logo">Hola</span><span id="logo2">Cakes</span></h1>
+				</div>
+				<div class="col-md-5 mt-4">
+
+				</div>
+				<div class="col-md-4 text-end">
+					<div class="col mb-3">
+					<a href="{{url_for('static', filename='www.facebook.com/holacakes')}}"><i class="fab fa-facebook fafont text-warning" id="icon1"></i></a>
+					<a href="{{url_for('static', filename='www.instagram.com/holacakes')}}"><i class="fab fa-instagram fafont text-warning" id="icon2"></i></a>
+					<a href="{{url_for('static', filename='www.linkedin.com/holacakes')}}"><i class="fab fa-linkedin fafont text-warning" id="icon3"></i></a>
+					<a href="{{url_for('static', filename='www.twitter.com/holacakes')}}"><i class="fab fa-twitter fafont text-warning" id="icon4"></i></a>
+					</div>
+					
+					<div class="col g-5 text-light">
+						
+						<span class="pe-2 demacation paragraph"><a href="{{url_for('admin_login')}}"><i class="fa fa-right-to-bracket"></i> Logout</a></span>
+					</div>			
+				</div>
+
+			</div>
+		</div>
+	</header>
+	</div>
+	<!-- hearder section ends-->
+
+	{% block content %}
+
+	{% endblock %}
+	<!--footer begin-->
+	<div class="container-fluid" id="foot">
+		<!--location-->
+		<div class="row mb-5">
+			<div class="col-md-3 mt-5">
+				<h5><i class="fa fa-location-dot"></i> LOCATION</h5>
+				<p class="paragraph">Prenstly we are based in Lagos</P>
+			</div>
+			<div class="col-md-3 mt-5">
+				<h5><i class="fa fa-address-book"></i> ADDRESS</h5>
+				<p class="paragraph">10, Adegbola Street, Abule-Egba, Lagos</P>
+			</div>
+			<div class="col-md-3 mt-5">
+				<h5 id="contact"><i class="fa fa-phone"></i> CONTACT</h5>
+				<p class="paragraph">support@holacakes.com.ng</P>
+				<p class="paragraph">+2348036159796</p>
+			</div>
+			<div class="col-md-3 mt-5">
+				<h5><i class="fa fa-door-open"></i> OPEN HOUR</h5>
+				<p class="paragraph">Monday - Saturday 8AM - 6PM</P>
+				<p class="paragraph">Sunday 9AM - 3PM</p>
+			</div>
+		</div>
+	<!--footer-->
+		<div class="row">
+			<div class="col-md-9 ">
+				<h6 class="paragraph">Designed by Ademolacode for HolaCakes Nigeria &copy; 2022</h6>
+			</div>
+			<div class="col-md-3">
+				<span class="paragraph">Connect with us</span>
+				<a href="{{url_for('static', filename='www.facebook.com/holacakes')}}"><i class="fab fa-facebook fafont text-warning" id="icon1"></i></a>
+				<a href="{{url_for('static', filename='www.instagram.com/holacakes')}}"><i class="fab fa-instagram fafont text-warning" id="icon2"></i></a>
+				<a href="{{url_for('static', filename='www.linkedin.com/holacakes')}}"><i class="fab fa-linkedin fafont text-warning" id="icon3"></i></a>
+				<a href="{{url_for('static', filename='www.twitter.com/holacakes')}}"><i class="fab fa-twitter fafont text-warning" id="icon4"></i></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="{{url_for('static', filename='js/jquery-3.6.0.min.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+<script type="text/javascript" language="javascript">
+//social media animation
+		$(document).ready(function(){
+			$('#icon1').mouseenter(function(){
+				$('#icon1').addClass("animate__animated animate__heartBeat").mouseleave(function(){
+				$('#icon1').removeClass("animate__animated animate__heartBeat");
+				})
+			})
+			
+
+			$('#icon2').mouseenter(function(){
+				$('#icon2').addClass("animate__animated animate__heartBeat").mouseleave(function(){
+				$('#icon2').removeClass("animate__animated animate__heartBeat");
+				})
+			})
+			
+
+			$('#icon3').mouseenter(function(){
+				$('#icon3').addClass("animate__animated animate__heartBeat").mouseleave(function(){
+				$('#icon3').removeClass("animate__animated animate__heartBeat");
+				})
+			})
+			
+
+			$('#icon4').mouseenter(function(){
+				$('#icon4').addClass("animate__animated animate__heartBeat").mouseleave(function(){
+				$('#icon4').removeClass("animate__animated animate__heartBeat");
+				})
+			})
+
+			//validating signup
+			$('#agree').click(function(){
+			var dis=$('#agree').prop('checked')
+			if(dis == false){
+				$('#btn').attr('disabled','disabled');
+			}else{
+				$('#btn').removeAttr('disabled')
+			}
+		})
+
+			$('.anim').addClass('animate__animated animate__bounceInDown animate__slow')
+		
+		//validating login
+		$('#logbtn').click(function(){
+			var username=$('#email').val();
+			var pwd = $('#pwd').val();
+			if(username.trim() =='' || pwd.trim() ==''){
+				$('#errormessage').html('Enter a valid username or password');
+			}else{
+				$('#errormessage').html('Welcome!, Login Successful');
+			}
+		})
+
+			$('#email').blur(function(){
+				$('#email').addClass("animate__animated animate__bounceInUp").mouseenter(function(){
+					$('#email').removeClass("animate__animated animate__bounceInUp")
+				})
+			})
+
+			$('#pwd').blur(function(){
+				$('#pwd').addClass("animate__animated animate__bounceInUp").mouseenter(function(){
+					$('#pwd').removeClass("animate__animated animate__bounceInUp")
+				})
+			})
+	})
+
+
+</script>
+</body>
+</html>

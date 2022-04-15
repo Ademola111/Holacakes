@@ -1,0 +1,38 @@
+{% extends "user/profilebase.html" %}
+
+{% block title %}
+Holacakes | Delivery
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            {% with m = get_flashed_messages() %}
+                    {% for i in m %}
+                    <p class="alert alert-success">{{i}}</p>
+                    {% endfor %}
+                    {% endwith %}
+        </div>
+        <div class="col-md-12">
+            <h1 class="text-center">Delivery</h1>
+            <p class="bg-danger text-center text-white mt-2"><b>Note:</b> A fee of N1500.00 will be charged at the point of delivery within Lagos</p><br>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+            <form action="{{url_for('delivery')}}" method="POST">
+                <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                <p class="text-center mt-2">Select a mode of delivery below</p>
+                <select name="deliverymode" class="form-control">
+                    <option value="pickup">Pick Up</option>
+                    <option value="home delivery">Home Delivery</option>
+                </select><br>
+                <button type="submit" id="delsub" class="btn btn-success form-contol">Submit Delivery</button>
+            </form>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

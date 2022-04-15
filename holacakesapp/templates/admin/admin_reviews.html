@@ -1,0 +1,36 @@
+{% extends 'admin/adminbase.html' %}
+
+{% block title %}
+HolaCakes|admin
+{% endblock %}
+
+{% block content %}
+<div class="col text-start mt-2">
+    <a href="{{url_for('admin_dashboard')}}"><button class="mb-3 btn btn-dark">Return To Dashboard</button></a>
+    {% with m = get_flashed_messages() %}
+    {% for i in m %}
+    <p class="fw-4">{{i}}</p>
+    {% endfor %}
+    {% endwith %}
+</div>
+<div class="row table-responsive">
+    <div class="col">
+        <table class="table table-hover table-primary table-striped">
+            <tr>
+                <td>Reviews Date</td>
+                <td>Username</td>
+                <td>Comment</td>
+            </tr>
+        {% for mw in rev %}
+            <tr>
+                <td>{{mw.reviews_date}}</td>
+                <td>{{mw.userreviewobj.user_fname}}</td>
+                <td>{{mw.reviews_comment}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+    
+</div>
+    
+{% endblock %}

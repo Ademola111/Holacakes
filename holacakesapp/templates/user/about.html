@@ -1,0 +1,41 @@
+{% extends 'user/base.html' %}
+
+{% block title %}
+    HolaCakes|About Us
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">            
+        <div class="col-md-2">
+        <img src="{{url_for('static', filename='images/ceo.jpg')}}" alt="Founder Picture" class="img-fluid">
+        </div>
+        <div class="col-md-10">
+            <h1 class="headstyle">Who are we?</h1>
+            <p class="justify">The Kinsha Creation" is a Nigerian Brand that started as a small family business. The owners are Mr. Onayemi Ademola and Miss Akinlowo Aishat, supported by a staff of 50 employees. Although not small any more, the business tries to keep the family atmosphere where we care not only about our company, our products and our staff, but also we consider each "customer" a member in this family of "Kinsha shoppers".</p>
+            <p  class="justify">Our mission is to make people happy. Making delicious cakes, having relaxing chairs in a smoking free environment and keeping our prices reasonable are all different ways to achieve this goal.</p>
+        </div>           
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="headstyle">Why Are We Unique ?</h1>
+            <p  class="justify">As the Cake Shop started as a home-bakery, we are keeping the ingredients the same as those used in your kitchen. This means you will not get commercial products thrown on your table. We are avoiding artificial preservatives and stabilizers, we do not use shortening or margarine in our kitchen and our ingredients do not contain trans-fat. When milk is required, we use only low-fat milk. When colors are needed, we only use products that are FDA approved and we do not import any products from markets that are not well monitored for safety. When you order your product, it is baked and prepared for you; hence you will get a fresh product that has the flavor you desire.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="headstyle">Can I Order Online?</h1>
+            <p  class="justify">While many people are skeptical regarding the success of online businesses in Nigeria, we believe that it is time to prove they are wrong. Our site, Kinsha.com, will be working side-by-side with our store and we hope it will serve our customers who like to shop from home. We are using the principles that made the successes of the best online businesses in the world: robust but simple programming, good customers’ care and most important, honesty and transparency. The site is not only our front window, but it is also a venue for many collaborating businesses that will help us delivering gifts, flowers and books along with our delicious cakes. You can now order a nice package online and pay by credit card so that your fiancé will get her birthday gift while you are staying thousands of miles away.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="headstyle">How Can I Help?</h1>
+            <p  class="justify">You can help us making more people happy by recommending our site to others. We love to make more cakes and to share more happy occasions with the great people of Nigeria. Also, if you feel your products can be sold online, we like to discuss with you ways to collaborate.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

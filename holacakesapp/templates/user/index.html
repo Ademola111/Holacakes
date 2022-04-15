@@ -1,0 +1,93 @@
+{% extends 'user/base.html' %}
+{% block title%}
+	HolaCakes
+{% endblock %}
+
+{% block content %}
+	<!-- carosel -->
+	<div class="row">
+		<div class="col">
+			<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+				  <div class="carousel-inner" style="z-index:0">
+				    <div class="carousel-item active">
+				      <img src="{{url_for('static', filename='images/background480.jpg')}}" class="d-block w-100 img-fluid" alt="val">
+				    </div>
+				    <div class="carousel-item">
+				      <img src="{{url_for('static', filename='images/background.png')}}" class="d-block w-100 img-fluid" alt="val">
+				    </div>
+				    <div class="carousel-item">
+				      <img src="{{url_for('static', filename='images/background480.jpg')}}" class="d-block w-100 img-fluid" alt="val">
+				    </div>
+				    <div class="carousel-item">
+				      <img src="{{url_for('static', filename='images/background.png')}}" class="d-block w-100 img-fluid" alt="val">
+				    </div>
+				  </div>
+				  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+				    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				    <span class="visually-hidden">Previous</span>
+				  </button>
+				  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+				    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+				    <span class="visually-hidden">Next</span>
+				  </button>
+			</div>
+		</div>
+	</div>
+	<!-- carosel ends-->
+	
+	<!-- our products-->
+	<div class="container-fluid mb-5">
+	<div class="row">
+		<div class="row mt-3 mb-3">
+			{% for item in allprod %}
+			<div class="col-md-3 mt-3">
+				<div class="card">
+					<a href="/product/{{item.product_id}}"><img src="/static/images/{{item.product_image_url}}" class="card-img-top img-fluid" alt="{{item.product_name}}" width="100"></a>
+				  <div class="card-body text-light text-center" style="background-color: black;">
+					<h6 class="card-title text-center">{{item.product_name}}</h6>
+					{#<p class="card-tex text-center">{{item.product_description}}</p>#}
+					<p class="card-tex text-center">N{{item.product_price}}</p>
+				  </div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+<!--product ends-->
+
+<!--section 1 start-->
+<div class="row mb-5">
+	<div class="row text-center">
+	<div class="offset-md-1 col-md-3 mt-3 col-sm-12">
+		<div class="card">
+		  <img src="{{url_for('static', filename='images/freshingredent.png')}}" class="card-img-top img-fluid" alt="freshingredent">
+		  <div class="card-body" style="background-color: black;">
+			<h5 class="card-title">FRESH INGREDENT</h5>
+			<p class="card-text text-light">All of our products are made with the finest quality ingredients and guaranteed fresh.</p>
+		  </div>
+		</div>
+	</div>
+	<div class="offset-md-1 col-md-3 mt-3 col-sm-12">
+		<div class="card">
+		  <img src="{{url_for('static', filename='images/love.png')}}" class="card-img-top img-fluid" alt="baked with love">
+		  <div class="card-body" style="background-color: black;">
+			<h5 class="card-title">BAKED WITH LOVE</h5>
+			<p class="card-text text-light">We are passionate about baking. Each of our handmade items are carefully baked with love.</p>
+		  </div>
+		</div>
+	</div>
+	<div class="offset-md-1 col-md-3 mt-3 col-sm-12">
+		<div class="card">
+		  <img src="{{url_for('static', filename='images/deliver.png')}}" class="card-img-top img-fluid" alt="delivery">
+		  <div class="card-body" style="background-color: black;">
+			<h5 class="card-title">ON TIME DELIVERY</h5>
+			<p class="card-text text-light">We are very punctual and promise to deliver fresh made products to every customer on time.</p>
+		  </div>
+		</div>
+	</div>
+</div>
+</div>
+<!-- section 1 ends-->
+{% endblock %}
+	

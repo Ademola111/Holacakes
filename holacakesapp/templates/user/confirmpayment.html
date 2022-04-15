@@ -1,0 +1,30 @@
+{% extends 'user/profilebase.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="text-center">Payment Confirmation</h3>
+        <p class="text-center">You are about to make the below payment</p>
+    </div>
+    <div class="col-md-12 mt-2 mb-2">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <form method="post" action="{{url_for('confirm_payment')}}">
+                    <p class="text-center"><b>NAME: {{users.user_fname|upper}} {{users.user_lname|upper}}</b></p>
+                    <p class="text-center"><b>REF NO: {{payin.payment_transNo}} </b></p>
+                    <p class="text-center"><b>AMOUNT: {{payin.payment_amount}}</b></p>
+                    <input type="hidden" name="csrf_token" value="{{csrf_token()}}"><br>
+                    <button type="submit" class="btn btn-outline-primary btn-lg form-control">Pay Now</button>
+                </form>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

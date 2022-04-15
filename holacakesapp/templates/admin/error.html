@@ -1,0 +1,11 @@
+{% extends 'admin/adminbase.html' %}
+{% block title %}
+HolaCakes|Error
+{% endblock %}
+
+{% block content %}
+<p class="fs-2 fw-bold text-center text-danger">ERROR 404</p>
+<p class="fs-5 fw-bold text-center text-dark">The requested URL was not found on the server.</p>
+<p class="fs-5 fw-bold text-center text-dark">If you entered the URL manually please check your spelling and try again.</p>
+<p class="text-center"><a href="{{url_for('home')}}" class="btn btn-primary">Click here to continue shopping</a></p>
+{% endblock %}

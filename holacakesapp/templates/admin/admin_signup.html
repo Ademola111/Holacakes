@@ -1,0 +1,80 @@
+{% extends 'admin/adminbase.html' %}
+	<!-- navbar section ends-->
+	{% block title%}
+		HolaCakes|Admin Signup
+	{% endblock %}
+
+	{% block content %}
+	<!-- carosel -->
+	<div class="row mb-5">
+		<div class="col-md-6">
+			<form  class="row g-3 align-item-start " action="{{url_for('admin_signup_submit')}}" method="POST">
+								<div class="col formwrap bg-light mt-5">
+								<h3>Sign Up</h3>
+									<div class="row mb-3">
+										<div class="col-12 mt-3">
+											<input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+											<input class="form-control anim" type="text" name="fname" placeholder="First Name" required>
+										</div>
+									</div>
+									<div class="row mb-3">
+										<div class="col-12 mt-3">
+											<input class="form-control anim" type="text" name="lname" placeholder="Last Name" required>
+										</div>
+									</div>
+									<div>
+										<div class="col-12 mb-3">
+											<input class="form-control anim" type="email" name="email" placeholder="E-mail address" required>
+										</div>
+									</div>
+									<div>
+										<div class="col-12 mb-3">
+											<input class="form-control anim" type="password" name="password" placeholder="" required>
+										</div>
+									</div>
+									<div>
+										<div class="col-12 mb-3">
+											<input class="form-control anim" type="password" name="confirmpassword" placeholder="" required>
+										</div>
+									</div>
+									<div>
+										<div class="col-12 mb-3">
+											<input class="form-control anim" type="text" name="phoneno" placeholder="Phone Number" required>
+										</div>
+									</div>
+									<div>
+										<div class="col-12 mb-3">
+											<input class="form-control anim" type="text" name="address" placeholder="Home Address" required>
+										</div>
+									</div>
+									
+									<div>
+										<div class="col-12 mb-3">
+											<input class="form-check-input anim" type="radio" name="gender" value="male" id="male" required>
+											<label for="male" class="form-check-label anim">Male</label>
+											<input class="radio form-check-input anim" type="radio" name="gender" value="female" id="female" required>
+											<label for="female" class="form-check-label anim">Female</label>
+										</div>
+									</div>
+									<div>
+										<input type="checkbox" name="agree" id="agree" class="form-check-input anim" required>
+										<span>i agree to the terms, condition and policy of the organisation</span>
+									</div>
+									<div>
+										<button type="submit" class="btn btn-success anim" id="btn" disabled="disabled">Sign Up</button>
+									</div>
+								</div>
+							</form>
+		</div>
+		<div class="col-md-6 mt-5">
+			<div class="col-md-12">
+				<p>Existing User <a href="{{url_for('admin_login')}}">click here</a>to login</p>
+			</div>
+			<div class="col-md-12" style="min-height:50px">
+				<img src="{{url_for('static', filename='images/cake2.png')}}" alt="cake" class="img-fluid thumbnail">
+			</div>
+		</div>
+	</div>
+	{% endblock %}
+	<!-- carosel ends-->
+	
